@@ -1,0 +1,132 @@
+.div {
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	margin: 0px;
+}
+
+.area {
+	zoom: 1;
+}
+
+.area {
+	width: 998px;
+	display: block;
+	clear: both;
+	content: ".";
+	margin-top: 0px;
+	border-top: 1px #afcfef solid; 
+}
+
+.area-main {
+	width: 998px;
+	float: right;
+}
+
+.area-main {
+	zoom: 1;
+}
+
+.area-main:after {
+	display: block;
+	height: 0px;
+	visibility: hidden;
+	clear: both;
+	overflow: hidden;
+	content: ".";
+}
+
+.main-col-10 { /*width: 495px;*/
+	width: 740px; /*缩短16px*/
+	float: left;
+}
+
+.main-col-10 {
+	zoom: 1;
+}
+
+.main-col-10:after {
+	display: block;
+	height: 0px;
+	visibility: hidden;
+	clear: both;
+	overflow: hidden;
+	content: ".";
+}
+
+.main-col-9 { /*width: 258px;*/
+	width: 250px; /*增长20px*/
+	float: left;
+}
+
+.main-col-9 {
+	zoom: 1;
+}
+
+.main-col-9:after {
+	display: block;
+	height: 0px;
+	visibility: hidden;
+	clear: both;
+	overflow: hidden;
+	content: ".";
+}
+
+a {
+	text-decoration: none;
+}
+
+.cityEnter {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+/*城市入口超链接*/
+.menuArea:link {
+	font-size: 16px;
+	color: #3950bf;
+	text-decoration: none;
+}
+
+.menuArea:visited {
+	font-size: 16px;
+	color: #3950bf;
+	text-decoration: none;
+}
+
+.menuArea:hover {
+	font-size: 16px;
+	color: #e37a7a;
+	text-decoration: underline;
+}
+/*城市入口超链接*/
+.menuArea2:link {
+	font-size: 16px;
+	color: #3950bf;
+	text-decoration: none;
+}
+
+.menuArea2:visited {
+	font-size: 16px;
+	color: #3950bf;
+	text-decoration: none;
+}
+
+.menuArea2:hover {
+	font-size: 16px;
+	color: #e37a7a;
+	text-decoration: underline;
+}
+div.flink{
+	color: #707070;
+	text-align:left;
+	font: 12px/1.2 Arial, Tahoma, "SimSun", sans-serif;
+	clear: both;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+div.flink a{
+	color: #707070;
+	text-decoration: none;
+}

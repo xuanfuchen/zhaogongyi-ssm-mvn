@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhaogongyi.dao.custom.ResumeInfoMapperCustom">
+	<sql id="pagination_where">
+		<where>
+			<if test="kw != null and kw.length()>0">
+				and TITLE like #{kw}
+			</if>
+			<if test="plid != null and plid.length()>0">
+				and PLACE_ID_FK like #{plid}
+			</if>
+			<if test="wtid != null and wtid.length()>0">
+				and WORK_TYPE_ID_FK like #{wtid}
+			</if>
+		</where>
+	</sql>
+	<select id="selectResumePagination" parameterType="hashmap"
+		resultType="hashmap">
+		select * from RESUME_INFO
+		<include refid="pagination_where" />
+		limit #{first},#{pageSize}
+	</select>
+
+	<select id="selectResumePaginationTotal" parameterType="hashmap"
+		resultType="int">
+		select count(*) total from RESUME_INFO
+		<include refid="pagination_where" />
+	</select>
+
+
+	<select id="selectResumesByAcctIdPagination" parameterType="hashmap"
+		resultType="hashmap">
+		select RESUME_ID,RESUME_TITLE,PUBLISH_DATE,DIS_FLAG from
+		RESUME_INFO where ACCT_ID_FK=#{acctIdFk} order by PUBLISH_DATE desc
+		limit #{first},#{pageSize}
+	</select>
+	<select id="selectResumesByAcctIdPaginationTotal" parameterType="hashmap"
+		resultType="int">
+		select count(*) from RESUME_INFO where
+		ACCT_ID_FK=#{acctIdFk}
+	</select>
+</mapper>

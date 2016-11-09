@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhaogongyi.dao.CompanyInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zhaogongyi.model.CompanyInfo" >
+    <id column="COMPANY_ID" property="companyId" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="TRADE" property="trade" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="GRAND" property="grand" jdbcType="VARCHAR" />
+    <result column="COM_PHONE" property="comPhone" jdbcType="VARCHAR" />
+    <result column="COM_EMAIL" property="comEmail" jdbcType="VARCHAR" />
+    <result column="ADDR" property="addr" jdbcType="VARCHAR" />
+    <result column="ACCT_ID_FK" property="acctIdFk" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zhaogongyi.model.CompanyInfo" extends="BaseResultMap" >
+    <result column="REMARK" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    COMPANY_ID, NAME, TRADE, TYPE, GRAND, COM_PHONE, COM_EMAIL, ADDR, ACCT_ID_FK
+  </sql>
+  <sql id="Blob_Column_List" >
+    REMARK
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.zhaogongyi.model.CompanyInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from company_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zhaogongyi.model.CompanyInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from company_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from company_info
+    where COMPANY_ID = #{companyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from company_info
+    where COMPANY_ID = #{companyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zhaogongyi.model.CompanyInfoExample" >
+    delete from company_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zhaogongyi.model.CompanyInfo" >
+    insert into company_info (COMPANY_ID, NAME, TRADE, 
+      TYPE, GRAND, COM_PHONE, 
+      COM_EMAIL, ADDR, ACCT_ID_FK, 
+      REMARK)
+    values (#{companyId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{trade,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{grand,jdbcType=VARCHAR}, #{comPhone,jdbcType=VARCHAR}, 
+      #{comEmail,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, #{acctIdFk,jdbcType=INTEGER}, 
+      #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhaogongyi.model.CompanyInfo" >
+    insert into company_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="companyId != null" >
+        COMPANY_ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="trade != null" >
+        TRADE,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="grand != null" >
+        GRAND,
+      </if>
+      <if test="comPhone != null" >
+        COM_PHONE,
+      </if>
+      <if test="comEmail != null" >
+        COM_EMAIL,
+      </if>
+      <if test="addr != null" >
+        ADDR,
+      </if>
+      <if test="acctIdFk != null" >
+        ACCT_ID_FK,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="trade != null" >
+        #{trade,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="grand != null" >
+        #{grand,jdbcType=VARCHAR},
+      </if>
+      <if test="comPhone != null" >
+        #{comPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="comEmail != null" >
+        #{comEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="acctIdFk != null" >
+        #{acctIdFk,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zhaogongyi.model.CompanyInfoExample" resultType="java.lang.Integer" >
+    select count(*) from company_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update company_info
+    <set >
+      <if test="record.companyId != null" >
+        COMPANY_ID = #{record.companyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trade != null" >
+        TRADE = #{record.trade,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        TYPE = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grand != null" >
+        GRAND = #{record.grand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comPhone != null" >
+        COM_PHONE = #{record.comPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comEmail != null" >
+        COM_EMAIL = #{record.comEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addr != null" >
+        ADDR = #{record.addr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acctIdFk != null" >
+        ACCT_ID_FK = #{record.acctIdFk,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update company_info
+    set COMPANY_ID = #{record.companyId,jdbcType=INTEGER},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      TRADE = #{record.trade,jdbcType=VARCHAR},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      GRAND = #{record.grand,jdbcType=VARCHAR},
+      COM_PHONE = #{record.comPhone,jdbcType=VARCHAR},
+      COM_EMAIL = #{record.comEmail,jdbcType=VARCHAR},
+      ADDR = #{record.addr,jdbcType=VARCHAR},
+      ACCT_ID_FK = #{record.acctIdFk,jdbcType=INTEGER},
+      REMARK = #{record.remark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update company_info
+    set COMPANY_ID = #{record.companyId,jdbcType=INTEGER},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      TRADE = #{record.trade,jdbcType=VARCHAR},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      GRAND = #{record.grand,jdbcType=VARCHAR},
+      COM_PHONE = #{record.comPhone,jdbcType=VARCHAR},
+      COM_EMAIL = #{record.comEmail,jdbcType=VARCHAR},
+      ADDR = #{record.addr,jdbcType=VARCHAR},
+      ACCT_ID_FK = #{record.acctIdFk,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhaogongyi.model.CompanyInfo" >
+    update company_info
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="trade != null" >
+        TRADE = #{trade,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="grand != null" >
+        GRAND = #{grand,jdbcType=VARCHAR},
+      </if>
+      <if test="comPhone != null" >
+        COM_PHONE = #{comPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="comEmail != null" >
+        COM_EMAIL = #{comEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        ADDR = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="acctIdFk != null" >
+        ACCT_ID_FK = #{acctIdFk,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where COMPANY_ID = #{companyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zhaogongyi.model.CompanyInfo" >
+    update company_info
+    set NAME = #{name,jdbcType=VARCHAR},
+      TRADE = #{trade,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=VARCHAR},
+      GRAND = #{grand,jdbcType=VARCHAR},
+      COM_PHONE = #{comPhone,jdbcType=VARCHAR},
+      COM_EMAIL = #{comEmail,jdbcType=VARCHAR},
+      ADDR = #{addr,jdbcType=VARCHAR},
+      ACCT_ID_FK = #{acctIdFk,jdbcType=INTEGER},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where COMPANY_ID = #{companyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhaogongyi.model.CompanyInfo" >
+    update company_info
+    set NAME = #{name,jdbcType=VARCHAR},
+      TRADE = #{trade,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=VARCHAR},
+      GRAND = #{grand,jdbcType=VARCHAR},
+      COM_PHONE = #{comPhone,jdbcType=VARCHAR},
+      COM_EMAIL = #{comEmail,jdbcType=VARCHAR},
+      ADDR = #{addr,jdbcType=VARCHAR},
+      ACCT_ID_FK = #{acctIdFk,jdbcType=INTEGER}
+    where COMPANY_ID = #{companyId,jdbcType=INTEGER}
+  </update>
+</mapper>

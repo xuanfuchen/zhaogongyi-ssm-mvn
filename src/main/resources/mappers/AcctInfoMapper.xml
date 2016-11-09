@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhaogongyi.dao.AcctInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zhaogongyi.model.AcctInfo" >
+    <id column="ACCT_ID" property="acctId" jdbcType="INTEGER" />
+    <result column="ACCT_NAME" property="acctName" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="PASSWORD2" property="password2" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="REG_DATETIME" property="regDatetime" jdbcType="TIMESTAMP" />
+    <result column="ACCT_TYPE" property="acctType" jdbcType="INTEGER" />
+    <result column="SALT" property="salt" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ACCT_ID, ACCT_NAME, PASSWORD, PASSWORD2, EMAIL, REG_DATETIME, ACCT_TYPE, SALT
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zhaogongyi.model.AcctInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from acct_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from acct_info
+    where ACCT_ID = #{acctId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from acct_info
+    where ACCT_ID = #{acctId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zhaogongyi.model.AcctInfoExample" >
+    delete from acct_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zhaogongyi.model.AcctInfo" >
+    insert into acct_info (ACCT_ID, ACCT_NAME, PASSWORD, 
+      PASSWORD2, EMAIL, REG_DATETIME, 
+      ACCT_TYPE, SALT)
+    values (#{acctId,jdbcType=INTEGER}, #{acctName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{password2,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{regDatetime,jdbcType=TIMESTAMP}, 
+      #{acctType,jdbcType=INTEGER}, #{salt,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhaogongyi.model.AcctInfo" >
+    insert into acct_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="acctId != null" >
+        ACCT_ID,
+      </if>
+      <if test="acctName != null" >
+        ACCT_NAME,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="password2 != null" >
+        PASSWORD2,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="regDatetime != null" >
+        REG_DATETIME,
+      </if>
+      <if test="acctType != null" >
+        ACCT_TYPE,
+      </if>
+      <if test="salt != null" >
+        SALT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="acctId != null" >
+        #{acctId,jdbcType=INTEGER},
+      </if>
+      <if test="acctName != null" >
+        #{acctName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="password2 != null" >
+        #{password2,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="regDatetime != null" >
+        #{regDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acctType != null" >
+        #{acctType,jdbcType=INTEGER},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zhaogongyi.model.AcctInfoExample" resultType="java.lang.Integer" >
+    select count(*) from acct_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update acct_info
+    <set >
+      <if test="record.acctId != null" >
+        ACCT_ID = #{record.acctId,jdbcType=INTEGER},
+      </if>
+      <if test="record.acctName != null" >
+        ACCT_NAME = #{record.acctName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        PASSWORD = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password2 != null" >
+        PASSWORD2 = #{record.password2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regDatetime != null" >
+        REG_DATETIME = #{record.regDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.acctType != null" >
+        ACCT_TYPE = #{record.acctType,jdbcType=INTEGER},
+      </if>
+      <if test="record.salt != null" >
+        SALT = #{record.salt,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update acct_info
+    set ACCT_ID = #{record.acctId,jdbcType=INTEGER},
+      ACCT_NAME = #{record.acctName,jdbcType=VARCHAR},
+      PASSWORD = #{record.password,jdbcType=VARCHAR},
+      PASSWORD2 = #{record.password2,jdbcType=VARCHAR},
+      EMAIL = #{record.email,jdbcType=VARCHAR},
+      REG_DATETIME = #{record.regDatetime,jdbcType=TIMESTAMP},
+      ACCT_TYPE = #{record.acctType,jdbcType=INTEGER},
+      SALT = #{record.salt,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhaogongyi.model.AcctInfo" >
+    update acct_info
+    <set >
+      <if test="acctName != null" >
+        ACCT_NAME = #{acctName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="password2 != null" >
+        PASSWORD2 = #{password2,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="regDatetime != null" >
+        REG_DATETIME = #{regDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acctType != null" >
+        ACCT_TYPE = #{acctType,jdbcType=INTEGER},
+      </if>
+      <if test="salt != null" >
+        SALT = #{salt,jdbcType=CHAR},
+      </if>
+    </set>
+    where ACCT_ID = #{acctId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhaogongyi.model.AcctInfo" >
+    update acct_info
+    set ACCT_NAME = #{acctName,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      PASSWORD2 = #{password2,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      REG_DATETIME = #{regDatetime,jdbcType=TIMESTAMP},
+      ACCT_TYPE = #{acctType,jdbcType=INTEGER},
+      SALT = #{salt,jdbcType=CHAR}
+    where ACCT_ID = #{acctId,jdbcType=INTEGER}
+  </update>
+</mapper>

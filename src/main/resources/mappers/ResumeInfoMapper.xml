@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhaogongyi.dao.ResumeInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zhaogongyi.model.ResumeInfo" >
+    <id column="RESUME_ID" property="resumeId" jdbcType="INTEGER" />
+    <result column="FULL_NAME" property="fullName" jdbcType="VARCHAR" />
+    <result column="GENDER" property="gender" jdbcType="TINYINT" />
+    <result column="CELL_PHONE" property="cellPhone" jdbcType="VARCHAR" />
+    <result column="PLACE_ID_FK" property="placeIdFk" jdbcType="VARCHAR" />
+    <result column="PLACE_NAME" property="placeName" jdbcType="VARCHAR" />
+    <result column="TRADE" property="trade" jdbcType="VARCHAR" />
+    <result column="JIGUAN" property="jiguan" jdbcType="VARCHAR" />
+    <result column="EDUCATION" property="education" jdbcType="VARCHAR" />
+    <result column="AGE" property="age" jdbcType="INTEGER" />
+    <result column="DIS_FLAG" property="disFlag" jdbcType="TINYINT" />
+    <result column="PUBLISH_DATE" property="publishDate" jdbcType="TIMESTAMP" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="EXPR_TIME" property="exprTime" jdbcType="VARCHAR" />
+    <result column="INTRODUCE" property="introduce" jdbcType="VARCHAR" />
+    <result column="SLY_BEGIN" property="slyBegin" jdbcType="INTEGER" />
+    <result column="SLY_END" property="slyEnd" jdbcType="INTEGER" />
+    <result column="WORK_TYPE_NAME" property="workTypeName" jdbcType="VARCHAR" />
+    <result column="WORK_TYPE_ID_FK" property="workTypeIdFk" jdbcType="VARCHAR" />
+    <result column="ACCT_ID_FK" property="acctIdFk" jdbcType="INTEGER" />
+    <result column="RESUME_TITLE" property="resumeTitle" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    RESUME_ID, FULL_NAME, GENDER, CELL_PHONE, PLACE_ID_FK, PLACE_NAME, TRADE, JIGUAN, 
+    EDUCATION, AGE, DIS_FLAG, PUBLISH_DATE, EMAIL, TITLE, EXPR_TIME, INTRODUCE, SLY_BEGIN, 
+    SLY_END, WORK_TYPE_NAME, WORK_TYPE_ID_FK, ACCT_ID_FK, RESUME_TITLE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zhaogongyi.model.ResumeInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from resume_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from resume_info
+    where RESUME_ID = #{resumeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from resume_info
+    where RESUME_ID = #{resumeId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zhaogongyi.model.ResumeInfoExample" >
+    delete from resume_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zhaogongyi.model.ResumeInfo" >
+    insert into resume_info (RESUME_ID, FULL_NAME, GENDER, 
+      CELL_PHONE, PLACE_ID_FK, PLACE_NAME, 
+      TRADE, JIGUAN, EDUCATION, 
+      AGE, DIS_FLAG, PUBLISH_DATE, 
+      EMAIL, TITLE, EXPR_TIME, 
+      INTRODUCE, SLY_BEGIN, SLY_END, 
+      WORK_TYPE_NAME, WORK_TYPE_ID_FK, ACCT_ID_FK, 
+      RESUME_TITLE)
+    values (#{resumeId,jdbcType=INTEGER}, #{fullName,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, 
+      #{cellPhone,jdbcType=VARCHAR}, #{placeIdFk,jdbcType=VARCHAR}, #{placeName,jdbcType=VARCHAR}, 
+      #{trade,jdbcType=VARCHAR}, #{jiguan,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, 
+      #{age,jdbcType=INTEGER}, #{disFlag,jdbcType=TINYINT}, #{publishDate,jdbcType=TIMESTAMP}, 
+      #{email,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{exprTime,jdbcType=VARCHAR}, 
+      #{introduce,jdbcType=VARCHAR}, #{slyBegin,jdbcType=INTEGER}, #{slyEnd,jdbcType=INTEGER}, 
+      #{workTypeName,jdbcType=VARCHAR}, #{workTypeIdFk,jdbcType=VARCHAR}, #{acctIdFk,jdbcType=INTEGER}, 
+      #{resumeTitle,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhaogongyi.model.ResumeInfo" >
+    insert into resume_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resumeId != null" >
+        RESUME_ID,
+      </if>
+      <if test="fullName != null" >
+        FULL_NAME,
+      </if>
+      <if test="gender != null" >
+        GENDER,
+      </if>
+      <if test="cellPhone != null" >
+        CELL_PHONE,
+      </if>
+      <if test="placeIdFk != null" >
+        PLACE_ID_FK,
+      </if>
+      <if test="placeName != null" >
+        PLACE_NAME,
+      </if>
+      <if test="trade != null" >
+        TRADE,
+      </if>
+      <if test="jiguan != null" >
+        JIGUAN,
+      </if>
+      <if test="education != null" >
+        EDUCATION,
+      </if>
+      <if test="age != null" >
+        AGE,
+      </if>
+      <if test="disFlag != null" >
+        DIS_FLAG,
+      </if>
+      <if test="publishDate != null" >
+        PUBLISH_DATE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="exprTime != null" >
+        EXPR_TIME,
+      </if>
+      <if test="introduce != null" >
+        INTRODUCE,
+      </if>
+      <if test="slyBegin != null" >
+        SLY_BEGIN,
+      </if>
+      <if test="slyEnd != null" >
+        SLY_END,
+      </if>
+      <if test="workTypeName != null" >
+        WORK_TYPE_NAME,
+      </if>
+      <if test="workTypeIdFk != null" >
+        WORK_TYPE_ID_FK,
+      </if>
+      <if test="acctIdFk != null" >
+        ACCT_ID_FK,
+      </if>
+      <if test="resumeTitle != null" >
+        RESUME_TITLE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resumeId != null" >
+        #{resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="fullName != null" >
+        #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="cellPhone != null" >
+        #{cellPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="placeIdFk != null" >
+        #{placeIdFk,jdbcType=VARCHAR},
+      </if>
+      <if test="placeName != null" >
+        #{placeName,jdbcType=VARCHAR},
+      </if>
+      <if test="trade != null" >
+        #{trade,jdbcType=VARCHAR},
+      </if>
+      <if test="jiguan != null" >
+        #{jiguan,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="disFlag != null" >
+        #{disFlag,jdbcType=TINYINT},
+      </if>
+      <if test="publishDate != null" >
+        #{publishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="exprTime != null" >
+        #{exprTime,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="slyBegin != null" >
+        #{slyBegin,jdbcType=INTEGER},
+      </if>
+      <if test="slyEnd != null" >
+        #{slyEnd,jdbcType=INTEGER},
+      </if>
+      <if test="workTypeName != null" >
+        #{workTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="workTypeIdFk != null" >
+        #{workTypeIdFk,jdbcType=VARCHAR},
+      </if>
+      <if test="acctIdFk != null" >
+        #{acctIdFk,jdbcType=INTEGER},
+      </if>
+      <if test="resumeTitle != null" >
+        #{resumeTitle,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zhaogongyi.model.ResumeInfoExample" resultType="java.lang.Integer" >
+    select count(*) from resume_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update resume_info
+    <set >
+      <if test="record.resumeId != null" >
+        RESUME_ID = #{record.resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.fullName != null" >
+        FULL_NAME = #{record.fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gender != null" >
+        GENDER = #{record.gender,jdbcType=TINYINT},
+      </if>
+      <if test="record.cellPhone != null" >
+        CELL_PHONE = #{record.cellPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.placeIdFk != null" >
+        PLACE_ID_FK = #{record.placeIdFk,jdbcType=VARCHAR},
+      </if>
+      <if test="record.placeName != null" >
+        PLACE_NAME = #{record.placeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trade != null" >
+        TRADE = #{record.trade,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jiguan != null" >
+        JIGUAN = #{record.jiguan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.education != null" >
+        EDUCATION = #{record.education,jdbcType=VARCHAR},
+      </if>
+      <if test="record.age != null" >
+        AGE = #{record.age,jdbcType=INTEGER},
+      </if>
+      <if test="record.disFlag != null" >
+        DIS_FLAG = #{record.disFlag,jdbcType=TINYINT},
+      </if>
+      <if test="record.publishDate != null" >
+        PUBLISH_DATE = #{record.publishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.email != null" >
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null" >
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.exprTime != null" >
+        EXPR_TIME = #{record.exprTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.introduce != null" >
+        INTRODUCE = #{record.introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.slyBegin != null" >
+        SLY_BEGIN = #{record.slyBegin,jdbcType=INTEGER},
+      </if>
+      <if test="record.slyEnd != null" >
+        SLY_END = #{record.slyEnd,jdbcType=INTEGER},
+      </if>
+      <if test="record.workTypeName != null" >
+        WORK_TYPE_NAME = #{record.workTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workTypeIdFk != null" >
+        WORK_TYPE_ID_FK = #{record.workTypeIdFk,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acctIdFk != null" >
+        ACCT_ID_FK = #{record.acctIdFk,jdbcType=INTEGER},
+      </if>
+      <if test="record.resumeTitle != null" >
+        RESUME_TITLE = #{record.resumeTitle,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update resume_info
+    set RESUME_ID = #{record.resumeId,jdbcType=INTEGER},
+      FULL_NAME = #{record.fullName,jdbcType=VARCHAR},
+      GENDER = #{record.gender,jdbcType=TINYINT},
+      CELL_PHONE = #{record.cellPhone,jdbcType=VARCHAR},
+      PLACE_ID_FK = #{record.placeIdFk,jdbcType=VARCHAR},
+      PLACE_NAME = #{record.placeName,jdbcType=VARCHAR},
+      TRADE = #{record.trade,jdbcType=VARCHAR},
+      JIGUAN = #{record.jiguan,jdbcType=VARCHAR},
+      EDUCATION = #{record.education,jdbcType=VARCHAR},
+      AGE = #{record.age,jdbcType=INTEGER},
+      DIS_FLAG = #{record.disFlag,jdbcType=TINYINT},
+      PUBLISH_DATE = #{record.publishDate,jdbcType=TIMESTAMP},
+      EMAIL = #{record.email,jdbcType=VARCHAR},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      EXPR_TIME = #{record.exprTime,jdbcType=VARCHAR},
+      INTRODUCE = #{record.introduce,jdbcType=VARCHAR},
+      SLY_BEGIN = #{record.slyBegin,jdbcType=INTEGER},
+      SLY_END = #{record.slyEnd,jdbcType=INTEGER},
+      WORK_TYPE_NAME = #{record.workTypeName,jdbcType=VARCHAR},
+      WORK_TYPE_ID_FK = #{record.workTypeIdFk,jdbcType=VARCHAR},
+      ACCT_ID_FK = #{record.acctIdFk,jdbcType=INTEGER},
+      RESUME_TITLE = #{record.resumeTitle,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhaogongyi.model.ResumeInfo" >
+    update resume_info
+    <set >
+      <if test="fullName != null" >
+        FULL_NAME = #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        GENDER = #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="cellPhone != null" >
+        CELL_PHONE = #{cellPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="placeIdFk != null" >
+        PLACE_ID_FK = #{placeIdFk,jdbcType=VARCHAR},
+      </if>
+      <if test="placeName != null" >
+        PLACE_NAME = #{placeName,jdbcType=VARCHAR},
+      </if>
+      <if test="trade != null" >
+        TRADE = #{trade,jdbcType=VARCHAR},
+      </if>
+      <if test="jiguan != null" >
+        JIGUAN = #{jiguan,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        EDUCATION = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        AGE = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="disFlag != null" >
+        DIS_FLAG = #{disFlag,jdbcType=TINYINT},
+      </if>
+      <if test="publishDate != null" >
+        PUBLISH_DATE = #{publishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="exprTime != null" >
+        EXPR_TIME = #{exprTime,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        INTRODUCE = #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="slyBegin != null" >
+        SLY_BEGIN = #{slyBegin,jdbcType=INTEGER},
+      </if>
+      <if test="slyEnd != null" >
+        SLY_END = #{slyEnd,jdbcType=INTEGER},
+      </if>
+      <if test="workTypeName != null" >
+        WORK_TYPE_NAME = #{workTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="workTypeIdFk != null" >
+        WORK_TYPE_ID_FK = #{workTypeIdFk,jdbcType=VARCHAR},
+      </if>
+      <if test="acctIdFk != null" >
+        ACCT_ID_FK = #{acctIdFk,jdbcType=INTEGER},
+      </if>
+      <if test="resumeTitle != null" >
+        RESUME_TITLE = #{resumeTitle,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RESUME_ID = #{resumeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhaogongyi.model.ResumeInfo" >
+    update resume_info
+    set FULL_NAME = #{fullName,jdbcType=VARCHAR},
+      GENDER = #{gender,jdbcType=TINYINT},
+      CELL_PHONE = #{cellPhone,jdbcType=VARCHAR},
+      PLACE_ID_FK = #{placeIdFk,jdbcType=VARCHAR},
+      PLACE_NAME = #{placeName,jdbcType=VARCHAR},
+      TRADE = #{trade,jdbcType=VARCHAR},
+      JIGUAN = #{jiguan,jdbcType=VARCHAR},
+      EDUCATION = #{education,jdbcType=VARCHAR},
+      AGE = #{age,jdbcType=INTEGER},
+      DIS_FLAG = #{disFlag,jdbcType=TINYINT},
+      PUBLISH_DATE = #{publishDate,jdbcType=TIMESTAMP},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      EXPR_TIME = #{exprTime,jdbcType=VARCHAR},
+      INTRODUCE = #{introduce,jdbcType=VARCHAR},
+      SLY_BEGIN = #{slyBegin,jdbcType=INTEGER},
+      SLY_END = #{slyEnd,jdbcType=INTEGER},
+      WORK_TYPE_NAME = #{workTypeName,jdbcType=VARCHAR},
+      WORK_TYPE_ID_FK = #{workTypeIdFk,jdbcType=VARCHAR},
+      ACCT_ID_FK = #{acctIdFk,jdbcType=INTEGER},
+      RESUME_TITLE = #{resumeTitle,jdbcType=VARCHAR}
+    where RESUME_ID = #{resumeId,jdbcType=INTEGER}
+  </update>
+</mapper>

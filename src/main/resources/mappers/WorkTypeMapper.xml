@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhaogongyi.dao.WorkTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.zhaogongyi.model.WorkType" >
+    <id column="WORK_TYPE_ID" property="workTypeId" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="PARENT_ID" property="parentId" jdbcType="VARCHAR" />
+    <result column="HIERARCHY" property="hierarchy" jdbcType="SMALLINT" />
+    <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+    <result column="IS_CHILD" property="isChild" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    WORK_TYPE_ID, NAME, PARENT_ID, HIERARCHY, ORDER_ID, IS_CHILD
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zhaogongyi.model.WorkTypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from work_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from work_type
+    where WORK_TYPE_ID = #{workTypeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from work_type
+    where WORK_TYPE_ID = #{workTypeId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zhaogongyi.model.WorkTypeExample" >
+    delete from work_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zhaogongyi.model.WorkType" >
+    insert into work_type (WORK_TYPE_ID, NAME, PARENT_ID, 
+      HIERARCHY, ORDER_ID, IS_CHILD
+      )
+    values (#{workTypeId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, 
+      #{hierarchy,jdbcType=SMALLINT}, #{orderId,jdbcType=VARCHAR}, #{isChild,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhaogongyi.model.WorkType" >
+    insert into work_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workTypeId != null" >
+        WORK_TYPE_ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID,
+      </if>
+      <if test="hierarchy != null" >
+        HIERARCHY,
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="isChild != null" >
+        IS_CHILD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workTypeId != null" >
+        #{workTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="hierarchy != null" >
+        #{hierarchy,jdbcType=SMALLINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="isChild != null" >
+        #{isChild,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zhaogongyi.model.WorkTypeExample" resultType="java.lang.Integer" >
+    select count(*) from work_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update work_type
+    <set >
+      <if test="record.workTypeId != null" >
+        WORK_TYPE_ID = #{record.workTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentId != null" >
+        PARENT_ID = #{record.parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hierarchy != null" >
+        HIERARCHY = #{record.hierarchy,jdbcType=SMALLINT},
+      </if>
+      <if test="record.orderId != null" >
+        ORDER_ID = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isChild != null" >
+        IS_CHILD = #{record.isChild,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update work_type
+    set WORK_TYPE_ID = #{record.workTypeId,jdbcType=VARCHAR},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      PARENT_ID = #{record.parentId,jdbcType=VARCHAR},
+      HIERARCHY = #{record.hierarchy,jdbcType=SMALLINT},
+      ORDER_ID = #{record.orderId,jdbcType=VARCHAR},
+      IS_CHILD = #{record.isChild,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhaogongyi.model.WorkType" >
+    update work_type
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="hierarchy != null" >
+        HIERARCHY = #{hierarchy,jdbcType=SMALLINT},
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="isChild != null" >
+        IS_CHILD = #{isChild,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where WORK_TYPE_ID = #{workTypeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhaogongyi.model.WorkType" >
+    update work_type
+    set NAME = #{name,jdbcType=VARCHAR},
+      PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      HIERARCHY = #{hierarchy,jdbcType=SMALLINT},
+      ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      IS_CHILD = #{isChild,jdbcType=VARCHAR}
+    where WORK_TYPE_ID = #{workTypeId,jdbcType=VARCHAR}
+  </update>
+</mapper>

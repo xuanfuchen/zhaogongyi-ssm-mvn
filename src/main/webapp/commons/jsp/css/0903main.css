@@ -1,0 +1,112 @@
+body {
+	font: 12px,"宋体", san-serif;
+	margin: 0px;
+}
+
+/*选择工种超链接颜色*/
+.wt-select:link {
+	font-size: 13px;
+	color: #0000cc;/*学58*/
+	text-decoration: none;
+}
+
+.wt-select:visited {
+	font-size: 13px;
+	color: #0000cc;/*学58*/
+	text-decoration: none;
+}
+
+.wt-select:hover {
+	font-size: 13px;
+	color: #ff0000;/*学58*/
+	text-decoration: underline;
+}
+
+/*工种超链接颜色**完****/
+
+/*iframe顶部的带*/
+.top-belt{
+	border-bottom: solid 1px #DCE2E6;
+	background: url(../images/tableTitle.jpg) repeat-x;
+	color:#07519A;
+	font-size:14px;
+	font-weight:normal;
+	text-align:left;
+	height: 25px;
+	padding-left: 10px;
+}
+.top-belt-right{
+	border-bottom: solid 1px #DCE2E6;
+	background: url(../images/tableTitle.jpg) repeat-x;
+	font-size:12px;
+	color:#EE091F;
+	font-weight:normal;
+	height: 25px;
+	padding-right: 10px;
+	text-align: right;
+}
+/*iframe顶部的带**完***/
+
+
+
+a.font_show:link  {
+    color: #333333;
+    font-family: "宋体";
+    font-size: 14px;
+    text-decoration: none;
+}
+a.font_show:visited {/*����*/
+	font-size:14px;
+	text-decoration: none;
+}
+a.font_show_blues:link {
+    color: #3950bf;
+    font-size: 12px;
+    text-decoration: none;
+}
+a.font_show_blues:visited {
+	font-size: 12px;
+	text-decoration: none;
+}
+
+
+
+.tableTitle{
+	border-bottom: solid 1px #DCE2E6;
+	background: url(../images/tableTitle.gif) repeat-x;
+	color:#07519A;
+	font-size:14px;
+	font-weight:normal;
+	text-align:left;
+	height: 25px;
+	padding-left: 10px;
+}
+
+.tableTitleRight{
+	border-bottom: solid 1px #DCE2E6;
+	background: url(../images/tableTitle.gif) repeat-x;
+	font-size:12px;
+	color:#EE091F;
+	font-weight:normal;
+	height: 25px;
+	padding-right: 10px;
+	text-align: right;
+}
+
+.mainleft{
+	border: solid 1px #B6D2E9;
+	width:728px;
+}
+.mainleft td{
+	text-align:left;
+	height: 23px;
+	padding-left: 6px;
+	font-size: 12px;
+	font-family: "Arial";
+}
+.mainleft #lastRow{
+	height: 5px;
+}
+.mainleft #firstRow{
+	height: 5px;
+}

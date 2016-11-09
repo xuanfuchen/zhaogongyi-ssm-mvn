@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 
+		常用CRON表达式:
+			0 */1 * * * ?       启动tomcat不运行,1分钟后运行第一次,以后每隔一分钟运行一次
+			0 0/1 * * * ?		(跟上面0 */1 * * * ?一样)启动tomcat不运行,1分钟后运行第一次,以后每隔一分钟运行一次
+			*/5 * * * * ?		 启动tomcat不运行,每隔5秒运行第一次,以后每隔一分钟运行一次
+	 -->
+
+
+	<!-- 扫描自动退房单 -->
+	<!-- <bean id="testTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="testJobDetail"></property>
+		<property name="cronExpression" value="0/2 * * * * ?"></property>
+	</bean>
+	<bean id="testJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="testTargetObject"></property>
+		<property name="targetMethod" value="testQuart"></property>
+		<property name="concurrent" value="false" />
+	</bean> -->
+	
+	
+	
+	<!-- 调度工厂 -->
+	<!-- <bean id="testTargetObject" class="com.zhaogongyi.timertask.TimerTasks" />
+	<bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="testTrigger" />
+			</list>
+		</property> 
+	</bean> -->
+</beans>
