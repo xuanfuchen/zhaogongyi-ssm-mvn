@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Repository;
 
 import com.zhaogongyi.dao.AcctInfoMapper;
+import com.zhaogongyi.dao.CommentInfoMapper;
 import com.zhaogongyi.dao.CompanyInfoMapper;
 import com.zhaogongyi.dao.PlaceMapper;
 import com.zhaogongyi.dao.ResumeInfoMapper;
@@ -33,6 +34,8 @@ public class DaoUtil {
 	public WorkInfoMapper workInfoMapper;
 	@Resource
 	public WorkTypeMapper workTypeMapper;
+	@Resource
+	public CommentInfoMapper commentInfoMapper;
 	
 	/**
 	 * 自定义接口

@@ -3,30 +3,32 @@ package com.zhaogongyi.controller.zhaopin;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.zhaogongyi.commons.pager.ListPage;
+import com.zhaogongyi.commons.pager.Pager;
+import com.zhaogongyi.controller.common.BaseAction;
 import com.zhaogongyi.model.CompanyInfo;
 import com.zhaogongyi.model.Place;
 import com.zhaogongyi.model.WorkInfo;
 import com.zhaogongyi.model.WorkType;
+import com.zhaogongyi.model.vo.CommentInfoVO;
 import com.zhaogongyi.model.vo.QueryCond;
 import com.zhaogongyi.model.vo.WorkTypeCountVO;
-import com.zhaogongyi.commons.pager.ListPage;
-import com.zhaogongyi.commons.pager.Pager;
+import com.zhaogongyi.service.common.CommentService;
 import com.zhaogongyi.service.common.PlaceService;
 import com.zhaogongyi.service.common.WorkTypeService;
 import com.zhaogongyi.service.zhaopin.CompanyService;
 import com.zhaogongyi.service.zhaopin.JobService;
 import com.zhaogongyi.util.CommonUtil;
-import com.zhaogongyi.controller.common.BaseAction;
 
 @Controller
 @RequestMapping("/job")
@@ -40,12 +42,16 @@ public class JobAction extends BaseAction {
 	private PlaceService placeService;
 	@Resource
 	private CompanyService companyService;
-
+	@Resource
+	private CommentService commentService;
+	
 
 	@RequestMapping("/detail/{id}")
 	public ModelAndView toJobDetail(@PathVariable Integer id) {
 		ModelAndView modelAndView = new ModelAndView("module-zhaopin/jobDetail");
 		WorkInfo jobDetail = jobService.findWorkInfoById(id);
+		List<CommentInfoVO> commentInfoList = commentService.getComment(id);
+		
 		
 		String dutyReq = jobDetail.getDutyReq();
 		if (dutyReq != null) {
@@ -68,7 +74,9 @@ public class JobAction extends BaseAction {
 		modelAndView.addObject("workInfo", jobDetail);
 		modelAndView.addObject("company", companyInfo);
 		modelAndView.addObject("workInfoList", relatedJobs);
-
+		modelAndView.addObject("commentInfoList", commentInfoList);
+		// 把評論信息查出來，塞到modelAdndVIew里，然后前端页面jsp进行展示
+		
 		return modelAndView;
 	}
 

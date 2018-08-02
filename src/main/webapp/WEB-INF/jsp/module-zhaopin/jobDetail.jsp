@@ -187,6 +187,8 @@ a:visited {
 	font-weight: bold;
 }
 </style>
+
+
 </head>
 <body>
 	<div style="width: 100%; text-align: center; margin-top: 0px;">
@@ -354,7 +356,7 @@ a:visited {
 							</tr>
 						</table>
 					</div>
-
+				
 					<%-- 左侧第二个广告 --%>
 					<div class="div-jianju" style="text-align: center;"></div>
 					<%-- /左侧第二个广告 --%>
@@ -406,7 +408,7 @@ a:visited {
 												<%-- 工作区域 --%>
 												<td>${tmp.placeName }<br></td>
 												<%-- 发布日期 --%>
-												<td><fmt:formatDate value="${tmp.publishDate}" pattern="yyyy-MM-dd"/> </td>
+												<td><fmt:formatDate value="${tmp.publishDate}" pattern="yyyy-MM-dd"/></td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -416,6 +418,34 @@ a:visited {
 					</c:if>
 				</div>
 
+				<div>
+				<p class=small>评论区</p>
+				<%-- 空评论警告 --%>
+				<p id="warning"></p>
+				<textarea id="comment_text" rows="3" cols="108" ></textarea>
+				<button type="button" id="comment_sub" class="btn btn-primary btn-xs" >提交评论</button>
+				</div>
+				
+				<br>
+				<table border="0" cellspacing="0" cellpadding="5" class="same-ent-jobs">
+				<tr>
+						<th width="14%">用户<br></th>
+						<th width="20%">评论内容 <br></th>
+						<th width="10%" >评论时间 <br></th>
+				</tr>
+									<c:forEach items="${commentInfoList}" var="comm">
+											<tr style="text-align: left;">
+												<%-- 用户名 --%>
+												<td style="text-align:left">${comm.acctName}<br></td>
+												<%-- 评论内容 --%>
+												<td> ${comm.content} <br></td>
+												<%-- 创建时间--%>
+												<td><fmt:formatDate value="${comm.createTime}" pattern="yyyy-MM-dd hh:mm"/> <br></td>
+											</tr>
+									</c:forEach>
+									</table>
+					     </div>
+				  <div>
 
 				<%-- 左边第三个广告 --%>
 				<div class="div-jianju" style="margin-top: 20px;"></div>
@@ -423,5 +453,63 @@ a:visited {
 			</div>
 		</div>
 	</div>
+	
+    <script type="text/javascript">
+    
+    $(document).ready(function(){
+        $("#comment_sub").click(function(){
+            if($('#comment_text').val() === ''){
+              $('#warning').html("<div class='alert alert-warning' role='alert'>评论内容不能为空!</div>");
+            }else{
+                //将警告区域的信息清除
+                $('#warning').html("");
+                var content = $('#comment_text').val();
+                var mydate = new Date();
+
+                //alert(content);
+                //$('#content').append(mydate.toLocaleDateString() + "：<br>" + content + "<hr>");
+                
+                //使用ajax来向后台传递数据
+                $.ajax({
+                 type: "post",
+                 url: "<%=path%>/job/comment",
+                 data : {
+     				"workId":"${workInfo.workId}",
+					"content":$('#comment_text').val()
+     			},
+                 success: function(msg){  
+                	 alert("评论成功！");
+                	 location.reload();
+                 },
+                 
+                 error: function(msg){
+                	 if("${CommentAction.loginUser == null}")
+                     alert("先登录才能评论")
+                	 else
+                 	 alert("评论失败！")
+                 }
+                 });
+                //清空文本区域
+                $('#comment_text').val("");
+            } 
+        });
+    });
+    
+    $(function() {
+        $(function() {
+            $("#comment_sub").click(settime);
+        });
+    });
+    var countdown = 3;
+    function settime() {
+        if(countdown == 0) {
+            $("#comment_sub").attr("disabled", false);
+            countdown = 3;
+        } else {
+            $("#comment_sub").attr("disabled", true);
+            countdown--;
+            setTimeout(settime, 1000)
+        }
+    }</script>
 </body>
 </html>
