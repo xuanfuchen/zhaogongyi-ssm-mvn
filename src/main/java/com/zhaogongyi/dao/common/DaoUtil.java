@@ -8,6 +8,7 @@ import com.zhaogongyi.dao.AcctInfoMapper;
 import com.zhaogongyi.dao.CommentInfoMapper;
 import com.zhaogongyi.dao.CompanyInfoMapper;
 import com.zhaogongyi.dao.PlaceMapper;
+import com.zhaogongyi.dao.ResumeCommentInfoMapper;
 import com.zhaogongyi.dao.ResumeInfoMapper;
 import com.zhaogongyi.dao.WorkInfoMapper;
 import com.zhaogongyi.dao.WorkTypeMapper;
@@ -36,7 +37,8 @@ public class DaoUtil {
 	public WorkTypeMapper workTypeMapper;
 	@Resource
 	public CommentInfoMapper commentInfoMapper;
-	
+	@Resource
+	public ResumeCommentInfoMapper resumeCommentInfoMapper;	
 	/**
 	 * 自定义接口
 	 */

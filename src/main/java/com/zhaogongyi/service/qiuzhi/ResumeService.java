@@ -19,6 +19,7 @@ import com.zhaogongyi.commons.pager.ListPage;
 import com.zhaogongyi.commons.pager.Pager;
 import com.zhaogongyi.dao.common.DaoUtil;
 import com.zhaogongyi.model.ResumeInfo;
+import com.zhaogongyi.model.WorkInfo;
 import com.zhaogongyi.model.vo.QueryCond;
 
 @Service
@@ -145,6 +146,18 @@ public class ResumeService {
 		}
 		return bo;
 	}
+	
+	public ResumeInfo findResumeInfoById(Integer resumeId) {
+		ResumeInfo resumeInfo = null;
+		try {
+			resumeInfo = daoUtil.resumeInfoMapper.selectByPrimaryKey(resumeId);
+		} catch (Exception e) {
+			log.error("查询ResumeInfo出错", e);
+			e.printStackTrace();
+		}
+		return resumeInfo;
+	}
+
 
 	// 使用set的好处比字段值散布在jsp中(使用hidden)的好处在于容易debug
 	public void adaptResumeInfo(ResumeInfo found, ResumeInfo newValue) {

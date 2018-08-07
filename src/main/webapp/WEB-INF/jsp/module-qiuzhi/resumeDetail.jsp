@@ -220,13 +220,39 @@ table {
 						</tr>
 					</table>
 				</div>
+				
+				<p>评论区</p>
+				<p id="warning"></p>
+				<textarea id="comment_text" rows="3" cols="108" ></textarea>
+				<button type="button" id="comment_sub" class="btn btn-primary btn-xs" >提交评论</button>
+				</div>
+				
+				<br>
+				<table border="0" cellspacing="0" cellpadding="5" id="tableDetail">
+				<tr>
+						<th width="1%">用户<br></th>
+						<th width="10%">评论内容 <br></th>
+						<th width="5%" >评论时间 <br></th>
+				</tr>
+									<c:forEach items="${resumeList}" var="comm">
+											<tr style="text-align: left;">
+												<%-- 用户名 --%>
+												<td style="text-align:left">${comm.acctId}<br></td>
+												<%-- 评论内容 --%>
+												<td> ${comm.content} <br></td>
+												<%-- 创建时间--%>
+												<td><fmt:formatDate value="${comm.createTime}" pattern="yyyy-MM-dd hh:mm"/> <br></td>
+											</tr>
+									</c:forEach>
+									</table>
+					     </div>
+				  <div>
 
 
 				<%-- 左边第二个广告 --%>
 				<div class="div-jianju" style="text-align: center; float: left;">
 
 				</div>
-
 				<%-- 左边第三个广告 --%>
 				<div class="div-jianju" style="text-align: center; float: left;">
 
@@ -234,6 +260,61 @@ table {
 			</div>
 
 		</div>
-	</div>
+		<script type="text/javascript">
+    
+    $(document).ready(function(){
+        $("#comment_sub").click(function(){
+            if($('#comment_text').val() === ''){
+              $('#warning').html("<div class='alert alert-warning' role='alert'>评论内容不能为空!</div>");
+            }else{
+                //将警告区域的信息清除
+                $('#warning').html("");
+                var content = $('#comment_text').val();
+                var mydate = new Date();
+				
+                //使用ajax来向后台传递数据
+                $.ajax({
+                 type: "post",
+                 url: "<%=path%>/resume/comment",
+                 data : {
+     				"resumeId":"${resumeInfo.resumeId}",
+					"content":$('#comment_text').val()
+     			},
+     			
+                 success: function(msg){
+                	 alert("评论成功！");
+                	 location.reload();
+                 },
+                 
+                 error: function(msg){
+                	 if("${CommentAction.loginUser == null}")
+                     alert("先登录才能评论")
+                	 else
+                 	 alert("评论失败！")
+                 }
+                 });
+                //清空文本区域
+                $('#comment_text').val("");
+            } 
+        });
+    });
+    
+    $(function() {
+        $(function() {
+            $("#comment_sub").click(settime);
+        });
+    });
+    var countdown = 3;
+    function settime() {
+        if(countdown == 0) {
+            $("#comment_sub").attr("disabled", false);
+            countdown = 3;
+        } else {
+            $("#comment_sub").attr("disabled", true);
+            countdown--;
+            setTimeout(settime, 1000)
+        }
+    }
+    </script>
 </body>
 </html>

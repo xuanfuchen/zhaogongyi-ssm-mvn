@@ -510,6 +510,7 @@ a:visited {
             countdown--;
             setTimeout(settime, 1000)
         }
-    }</script>
+    }
+    </script>
 </body>
 </html>

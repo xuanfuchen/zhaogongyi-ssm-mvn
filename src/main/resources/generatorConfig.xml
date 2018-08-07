@@ -68,7 +68,7 @@
 		
 		
 		<table tableName="comment_info" />
-			
+			<table tableName="resume_comment_info" />
 
 	</context>
 </generatorConfiguration>

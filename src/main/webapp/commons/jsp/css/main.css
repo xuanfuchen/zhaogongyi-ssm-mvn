@@ -1,10 +1,10 @@
-/*个人登录后点击左边的"修改个人信息"，右边的iframe的"修改个人信息"的td的样式*/
+/*涓汉鐧诲綍鍚庣偣鍑诲乏杈圭殑"淇敼涓汉淇℃伅"锛屽彸杈圭殑iframe鐨�"淇敼涓汉淇℃伅"鐨則d鐨勬牱寮�*/
 .personal-ifram-1 {
 	height: 30px;
 	vertical-align: top;
 }
 
-/*个人登录后点击左边的"修改个人信息"，右边的iframe的"修改个人信息"的字体*/
+/*涓汉鐧诲綍鍚庣偣鍑诲乏杈圭殑"淇敼涓汉淇℃伅"锛屽彸杈圭殑iframe鐨�"淇敼涓汉淇℃伅"鐨勫瓧浣�*/
 .personl-ifram-char-1 {
 	font-size: 18px;
 	color: #169B00;
@@ -12,7 +12,7 @@
 	font-weight: bold;
 }
 
-/*登录后导航菜单，一级*/
+/*鐧诲綍鍚庡鑸彍鍗曪紝涓�绾�*/
 .menuTitle {
 	font-size: 15px;
 	font-weight: normal;
@@ -20,19 +20,19 @@
 	cursor: pointer;
 }
 
-/*左边的导航框*/
+/*宸﹁竟鐨勫鑸*/
 .navigator-table-1 {
 	width: 100%;
 	border: 0px black solid;
 	padding: 0px;
 	margin: 0px;
 }
-/*导航栏菜单项可以缩起来或展开*/
+/*瀵艰埅鏍忚彍鍗曢」鍙互缂╄捣鏉ユ垨灞曞紑*/
 #havesub td{
 	height: 25px;
 	vertical-align: top;
 }
-/*导航栏菜单项子菜单文字*/
+/*瀵艰埅鏍忚彍鍗曢」瀛愯彍鍗曟枃瀛�*/
 .subitem-1 td{
 	font-size: 13px;
 }
@@ -58,7 +58,7 @@ table.subitem-1 tr td a:hover{
 	text-decoration: underline;
 }
 
-/*欢迎界面*/
+/*娆㈣繋鐣岄潰*/
 .webcome-head {
 	height: 30px;
 	font-size: 18px;
@@ -66,13 +66,13 @@ table.subitem-1 tr td a:hover{
 	vertical-align: top;
 }
 
-/*欢迎界面下的文字*/
+/*娆㈣繋鐣岄潰涓嬬殑鏂囧瓧*/
 .welcome {
 	font-size: 14px;
 	line-height: 30px;
 }
 
-/*分割线 hr*/
+/*鍒嗗壊绾� hr*/
 .hr0 {
 	height: 1px;
 	border: none;
@@ -80,7 +80,7 @@ table.subitem-1 tr td a:hover{
 	font-size: 1px;
 }
 
-/*************************注册页面样式**********************/
+/*************************娉ㄥ唽椤甸潰鏍峰紡**********************/
 .databox {
 	border-bottom: #cedaea 1px solid;
 	border-left: #cedaea 0px solid;
@@ -125,7 +125,7 @@ table.subitem-1 tr td a:hover{
 	text-align: left;
 }
 
-/*小框框*/
+/*灏忔妗�*/
 .xiaoshurukuang {
 	border-bottom: #d4d4d4 1px solid;
 	border-left: #d4d4d4 1px solid;
@@ -135,7 +135,7 @@ table.subitem-1 tr td a:hover{
 	width: 50px;
 }
 
-/*注册textarea样式*/
+/*娉ㄥ唽textarea鏍峰紡*/
 .text {
 	border-bottom: #d5d5d5 1px solid;
 	border-left: #d5d5d5 1px solid;
@@ -147,7 +147,7 @@ table.subitem-1 tr td a:hover{
 	padding-right: 5px;
 	color: black;
 }
-/*返回首页的样式*/
+/*杩斿洖棣栭〉鐨勬牱寮�*/
 .return-to-home {
 	text-align: right;
 	padding-right: 20px;
@@ -158,10 +158,10 @@ table.subitem-1 tr td a:hover{
 .return-to-home a{
 	color: #3950bf;
 }
-/*************************注册页面样式 end **********************/
+/*************************娉ㄥ唽椤甸潰鏍峰紡 end **********************/
 
-/*************************按钮******************/
-/*确认修改*/
+/*************************鎸夐挳******************/
+/*纭淇敼*/
 .confirm-verify{
 	text-align:center;
 	padding-bottom:0px;
@@ -174,7 +174,7 @@ table.subitem-1 tr td a:hover{
 	font-weight:bold;
 	font-size:14px;
 }
-/*选择工种*/
+/*閫夋嫨宸ョ*/
 .choose-wt{
 	text-align:center;
 	padding-bottom:0px;
@@ -189,13 +189,13 @@ table.subitem-1 tr td a:hover{
 	cursor: pointer; 
 	vertical-align: middle;
 }
-/*选择工种·超链接*/
+/*閫夋嫨宸ョ路瓒呴摼鎺�*/
 .choose-wt2{
 	font-weight: bold;
 	text-decoration: underline;
 	color: #3366FF;
 }
-/*select下拉框，需要和newinp相同长度的时候用此样式*/
+/*select涓嬫媺妗嗭紝闇�瑕佸拰newinp鐩稿悓闀垮害鐨勬椂鍊欑敤姝ゆ牱寮�*/
 .select-long{
 	width: 210px;
 	height: 30px;
@@ -205,11 +205,11 @@ table.subitem-1 tr td a:hover{
 	margin-bottom: 0px;
 }
 
-/*************************按钮 end******************/
+/*************************鎸夐挳 end******************/
 
-/*****************************控制超链接的颜色***********************************************************/
+/*****************************鎺у埗瓒呴摼鎺ョ殑棰滆壊***********************************************************/
 
-/*企业个人登录后左边的超链接，右边是iframe*/
+/*浼佷笟涓汉鐧诲綍鍚庡乏杈圭殑瓒呴摼鎺ワ紝鍙宠竟鏄痠frame*/
 .menuBlue0:link {
 	font-size: 15px;
 	color: #3950bf;
@@ -264,7 +264,7 @@ table.subitem-1 tr td a:hover{
 	text-decoration: underline;
 }
 
-/*工种查询页*/
+/*宸ョ鏌ヨ椤�*/
 .gz-query:link {
 	font-size: 13px;
 	color: #3950bf;
@@ -283,7 +283,7 @@ table.subitem-1 tr td a:hover{
 	text-decoration: underline;
 }
 
-/*按地区找工作，超链接*/
+/*鎸夊湴鍖烘壘宸ヤ綔锛岃秴閾炬帴*/
 .menuBlue2:link {
 	font-size: 14px;
 	color: #3950bf;
@@ -302,7 +302,7 @@ table.subitem-1 tr td a:hover{
 	text-decoration: underline;
 }
 
-/*地区超链接*/
+/*鍦板尯瓒呴摼鎺�*/
 .menuArea:link {
 	font-size: 14px;
 	color: #3950bf;
@@ -352,12 +352,12 @@ A:visited {
 }
 
 
-/*这是地区，保证了东莞多区但不换行*/
+/*杩欐槸鍦板尯锛屼繚璇佷簡涓滆帪澶氬尯浣嗕笉鎹㈣*/
 /*
 p.buzhuanhang-p{
 	line-height:20px;
 	margin-top: 10px;
-	font-family: '宋体';
+	font-family: '瀹嬩綋';
 }
 
 .buzhuanhang-tishi{
@@ -377,18 +377,18 @@ p.buzhuanhang-p{
 	margin-right: 6px;
 }
 */
-/*这是地区，保证了东莞多区但不换行*/
+/*杩欐槸鍦板尯锛屼繚璇佷簡涓滆帪澶氬尯浣嗕笉鎹㈣*/
 
 
-/*登录后选择左边的超链接，改变右边的ifame，左边的超链接被选中变成下面的样式*/
+/*鐧诲綍鍚庨�夋嫨宸﹁竟鐨勮秴閾炬帴锛屾敼鍙樺彸杈圭殑ifame锛屽乏杈圭殑瓒呴摼鎺ヨ閫変腑鍙樻垚涓嬮潰鐨勬牱寮�*/
 .chosen-item{
 	color: black !important;
 	font-weight: bold;
 }
 
-/*****************************控制超链接的颜色**完*********************************************************/
+/*****************************鎺у埗瓒呴摼鎺ョ殑棰滆壊**瀹�*********************************************************/
 
-/*选择工种的ifame加阴影，美化*/
+/*閫夋嫨宸ョ鐨刬fame鍔犻槾褰憋紝缇庡寲*/
 #wtIframe{
 	/*border: 0px;*/
 	filter:progid:dximagetransform.microsoft.shadow(strength=4, direction=135, color='#cccccc'); 
@@ -408,7 +408,7 @@ p.buzhuanhang-p{
 	
 }
 
-/*面包屑，访问过和没访问同颜色，鼠标悬停变色加下划线*/
+/*闈㈠寘灞戯紝璁块棶杩囧拰娌¤闂悓棰滆壊锛岄紶鏍囨偓鍋滃彉鑹插姞涓嬪垝绾�*/
 .bread-crumb-1:link{
 	font-size: 14px;
 	color: #3950bf;
@@ -434,15 +434,15 @@ table {
 	font-size: 14px;
 }
 
-/*电话号码，企业发布信息页面*/
+/*鐢佃瘽鍙风爜锛屼紒涓氬彂甯冧俊鎭〉闈�*/
 .telNumber{
 	color: black;
-	font-family: '黑体';
+	font-family: '榛戜綋';
 	font-weight: bold;
 	font-size: 16px;
 }
 
-/*input标签美化*/
+/*input鏍囩缇庡寲*/
 .inp {
 	border-bottom: #c8c8c8 1px solid;
 	border-top: #c8c8c8 1px solid;
@@ -452,7 +452,7 @@ table {
 	height: 22px;
 }
 
-/*button美化*/ /*
+/*button缇庡寲*/ /*
 .btn{
 	border-bottom: medium none;
 	border-left: medium none;
@@ -470,7 +470,7 @@ table {
 	font-size: 12px;
 	cursor: pointer;
 	background-color: #F2F2F2;
-}*/ /*提示截图*/
+}*/ /*鎻愮ず鎴浘*/
 .tishijietu1 {
 	background-image: url(<%=path %>/work/tishi/images/tishi.gif) !important
 		;
@@ -492,12 +492,12 @@ table {
 	background-position: 0px 198px;
 }
 
-/*红字*/
+/*绾㈠瓧*/
 .redChar {
 	color: red;
 }
 
-/*加红加粗*/
+/*鍔犵孩鍔犵矖*/
 .redBoldChar {
 	color: red;
 	font-weight: bold;
@@ -514,7 +514,7 @@ table {
 	cursor: pointer;
 }
 
-/*查看个人简历并分享*/
+/*鏌ョ湅涓汉绠�鍘嗗苟鍒嗕韩*/
 .shareResume {
 	font-weight: bold;
 	color: red;
@@ -527,14 +527,14 @@ table {
 	color: #F62D2D;
 }
 
-/*大标题，例如：个人用户中心*/
+/*澶ф爣棰橈紝渚嬪锛氫釜浜虹敤鎴蜂腑蹇�*/
 .bigTitle {
 	font-size: 18px;
 	font-weight: bold;
 	color: #F62D2D;
 }
 
-/*一般是从java代码后台传回的字符串*/
+/*涓�鑸槸浠巎ava浠ｇ爜鍚庡彴浼犲洖鐨勫瓧绗︿覆*/
 .message {
 	font-size: 20px;
 	font-weight: bold;
@@ -547,14 +547,14 @@ table {
 	color: black;
 }
 
-/*登陆后右边的iframe的“提示信息”之类的字*/
+/*鐧婚檰鍚庡彸杈圭殑iframe鐨勨�滄彁绀轰俊鎭�濅箣绫荤殑瀛�*/
 .rightIfrm {
 	font-size: 18px;
 	font-weight: bold;
 	color: #169B00;
 }
 
-/*工种信息标题enterpriseJobDesc.jsp、enterpriseJobDescMedi.jsp*/
+/*宸ョ淇℃伅鏍囬enterpriseJobDesc.jsp銆乪nterpriseJobDescMedi.jsp*/
 .menuTitle2 {
 	font-size: 16px;
 	font-weight: bold;
@@ -692,7 +692,7 @@ table {
 	color: #666;
 }
 
-/*按照区域（例如天河区）进行搜索的字体*/
+/*鎸夌収鍖哄煙锛堜緥濡傚ぉ娌冲尯锛夎繘琛屾悳绱㈢殑瀛椾綋*/
 .areaSectionSearch {
 	font-size: 13px;
 	color: #000000;
@@ -700,16 +700,16 @@ table {
 }
 
 
-/*旧的，粉红色*/
+/*鏃х殑锛岀矇绾㈣壊*/
 .tableHead2 td {
 	font-size: 14px;
 	border-top-style: solid;
 	border-top-width: 1px;
-	border-top-color: #e37a7a; /*灰色  #CCCCCC*/
+	border-top-color: #e37a7a; /*鐏拌壊  #CCCCCC*/
 	background-color: #fff9f9;
 }
 
-/*新的，浅蓝色*/
+/*鏂扮殑锛屾祬钃濊壊*/
 .tableHead td {
 	font-size: 14px;
 	border-top-style: solid;
@@ -725,14 +725,14 @@ table {
 	border-top-style: solid;
 	border-top-width: 1px;
 	text-align:left;
-	/*原来
-	border-top-color: #0080FF; 灰色  #CCCCCC
+	/*鍘熸潵
+	border-top-color: #0080FF; 鐏拌壊  #CCCCCC
 	background-color: #D4F0FF;*/
-	border-top-color: #CCCCCC; /*灰色  #CCCCCC*/
+	border-top-color: #CCCCCC; /*鐏拌壊  #CCCCCC*/
 	background-color: #f9f9f9;
 }
 
-/*这是查询同一个企业相关的工作*/
+/*杩欐槸鏌ヨ鍚屼竴涓紒涓氱浉鍏崇殑宸ヤ綔*/
 .tableRowSameWork1 td{
 	background-color: #ffffff;
 	font-size: 14px;
@@ -758,7 +758,7 @@ table {
 	*/
 }
 
-/*旧的，粉红色*/ /*
+/*鏃х殑锛岀矇绾㈣壊*/ /*
 .tableRow1 td{
 background-color:#ffffff;
 font-size:14px;	
@@ -774,7 +774,7 @@ border-top-width: 1px;
 border-top-color:#F9E3E3;
 background-color:#f9f9f9;
 }
-*/ /*新的，浅蓝色*/
+*/ /*鏂扮殑锛屾祬钃濊壊*/
 .tableRow1 td {
 	background-color: #ffffff;
 	font-size: 14px;
@@ -783,7 +783,7 @@ background-color:#f9f9f9;
 	border-top-color: #D0E5F4;
 }
 
-/*新的，浅蓝色*/
+/*鏂扮殑锛屾祬钃濊壊*/
 .tableRow2 td {
 	font-size: 14px;
 	border-top-style: solid;
@@ -932,7 +932,7 @@ background-color:#f9f9f9;
 	width: 250px;
 }
 
-/*立刻发送邮件，大按钮*/
+/*绔嬪埢鍙戦�侀偖浠讹紝澶ф寜閽�*/
 .bigButton {
 	width: 115px;
 	height: 40px;
@@ -940,7 +940,7 @@ background-color:#f9f9f9;
 	font-size: 14px;
 }
 
-/*招聘列表下的提示信息*/
+/*鎷涜仒鍒楄〃涓嬬殑鎻愮ず淇℃伅*/
 .bottomInfo {
 	padding-top: 25px;
 	/*border-top:#e37a7a 1px solid;*/
@@ -948,13 +948,13 @@ background-color:#f9f9f9;
 	text-align: left;
 }
 
-/*公司名称和公司行业之间的间距*/
+/*鍏徃鍚嶇О鍜屽叕鍙歌涓氫箣闂寸殑闂磋窛*/
 .cpnyDutySpacing {
 	font-weight: bold;
 	height: 25px;
 }
 
-/*工种*/
+/*宸ョ*/
 .gz-table td{
 	width: 90px;
 }

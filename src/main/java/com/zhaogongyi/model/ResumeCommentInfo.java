@@ -3,17 +3,17 @@ package com.zhaogongyi.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class CommentInfo implements Serializable {
+public class ResumeCommentInfo implements Serializable {
     private Integer id;
 
     private Date createTime;
 
     private Integer acctId;
 
-    private Integer workId;
+    private Integer resumeId;
 
     private String content;
-
+    
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -40,12 +40,12 @@ public class CommentInfo implements Serializable {
         this.acctId = acctId;
     }
 
-    public Integer getWorkId() {
-        return workId;
+    public Integer getResumeId() {
+        return resumeId;
     }
 
-    public void setWorkId(Integer workId) {
-        this.workId = workId;
+    public void setResumeId(Integer resumeId) {
+        this.resumeId = resumeId;
     }
 
     public String getContent() {

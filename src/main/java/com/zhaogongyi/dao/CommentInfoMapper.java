@@ -2,6 +2,8 @@ package com.zhaogongyi.dao;
 
 import com.zhaogongyi.model.CommentInfo;
 import com.zhaogongyi.model.CommentInfoExample;
+import com.zhaogongyi.model.ResumeCommentInfo;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +29,6 @@ public interface CommentInfoMapper {
     int updateByPrimaryKeySelective(CommentInfo record);
 
     int updateByPrimaryKey(CommentInfo record);
+
+	void insertSelective(ResumeCommentInfo record);
 }

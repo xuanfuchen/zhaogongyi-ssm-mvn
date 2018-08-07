@@ -14,13 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zhaogongyi.model.Place;
+import com.zhaogongyi.model.ResumeCommentInfo;
 import com.zhaogongyi.model.ResumeInfo;
 import com.zhaogongyi.model.WorkType;
+import com.zhaogongyi.model.vo.CommentInfoVO;
 import com.zhaogongyi.model.vo.QueryCond;
 import com.zhaogongyi.model.vo.WorkTypeCountVO;
 import com.zhaogongyi.commons.pager.ListPage;
 import com.zhaogongyi.commons.pager.Pager;
 import com.zhaogongyi.service.common.PlaceService;
+import com.zhaogongyi.service.common.ResumeCommentService;
 import com.zhaogongyi.service.common.WorkTypeService;
 import com.zhaogongyi.service.qiuzhi.ResumeService;
 import com.zhaogongyi.controller.common.BaseAction;
@@ -34,13 +37,20 @@ public class ResumeAction extends BaseAction {
 	private WorkTypeService workTypeService;
 	@Resource
 	private PlaceService placeService;
+	@Resource
+	private ResumeCommentService resumeCommentService;
 
 
 	@RequestMapping("/detail/{id}")
 	public ModelAndView toResumeDetail(@PathVariable Integer id) {
 		ModelAndView modelAndView = new ModelAndView("module-qiuzhi/resumeDetail");
-		ResumeInfo resumeInfo = resumeService.findById(id);
+		ResumeInfo resumeInfo = resumeCommentService.findResumeInfoById(id);
+		List<ResumeCommentInfo> resumeCommentInfoList = resumeCommentService.getComment(id);
+		
+		
 		modelAndView.addObject("resumeInfo", resumeInfo);
+		modelAndView.addObject("resumeList",resumeCommentInfoList);
+		
 		return modelAndView;
 	}
 
