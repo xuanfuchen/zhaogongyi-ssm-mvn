@@ -16,6 +16,7 @@ import com.zhaogongyi.model.AcctInfo;
 import com.zhaogongyi.model.ResumeCommentInfo;
 import com.zhaogongyi.model.ResumeCommentInfoExample;
 import com.zhaogongyi.model.ResumeInfo;
+import com.zhaogongyi.model.vo.ResumeCommentInfoVO;
 import com.zhaogongyi.util.DateUtil;
 	
 @Service
@@ -38,16 +39,16 @@ public class ResumeCommentService {
 	}
 	
 	@SuppressWarnings("unused")
-	public List<ResumeCommentInfo> getComment(Integer resumeId) {	
+	public List<ResumeCommentInfoVO> getComment(Integer resumeId) {	
 		
 		ResumeCommentInfoExample example = new ResumeCommentInfoExample();
 		example.setOrderByClause("create_time DESC");
 		example.createCriteria().andResumeIdEqualTo(resumeId);// select *from resume_comment_info where result_id=?
 		List<ResumeCommentInfo> resultList = daoUtil.resumeCommentInfoMapper.selectByExample(example);
 		
-		List<ResumeCommentInfo> resultListResume = new ArrayList<>();
+		List<ResumeCommentInfoVO> resultListResume = new ArrayList<>();
 		for (ResumeCommentInfo commentInfo : resultList) {
-			ResumeCommentInfo v = new ResumeCommentInfo();
+			ResumeCommentInfoVO v = new ResumeCommentInfoVO();
 			v.setAcctId(commentInfo.getAcctId());
 			v.setContent(commentInfo.getContent());
 			Date createTime = DateUtil.now();
@@ -58,12 +59,12 @@ public class ResumeCommentService {
 			int acctId = commentInfo.getAcctId();
 			// 再去库查出acctName
 			AcctInfo acctInfo = daoUtil.acctInfoMapper.selectByPrimaryKey(acctId);
-			//v.setAcctName(acctInfo == null ?"null": acctInfo.getAcctId());
+			v.setAcctName(acctInfo == null ?"null": acctInfo.getAcctName());
 			
 			resultListResume.add(v);
 		}
 		
-		return resultList;
+		return resultListResume;
 	}	
 	public ResumeInfo findResumeInfoById(Integer resumeId) {
 		ResumeInfo resumeInfo = null;

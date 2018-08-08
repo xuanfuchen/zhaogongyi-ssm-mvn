@@ -19,6 +19,7 @@ import com.zhaogongyi.model.ResumeInfo;
 import com.zhaogongyi.model.WorkType;
 import com.zhaogongyi.model.vo.CommentInfoVO;
 import com.zhaogongyi.model.vo.QueryCond;
+import com.zhaogongyi.model.vo.ResumeCommentInfoVO;
 import com.zhaogongyi.model.vo.WorkTypeCountVO;
 import com.zhaogongyi.commons.pager.ListPage;
 import com.zhaogongyi.commons.pager.Pager;
@@ -45,7 +46,7 @@ public class ResumeAction extends BaseAction {
 	public ModelAndView toResumeDetail(@PathVariable Integer id) {
 		ModelAndView modelAndView = new ModelAndView("module-qiuzhi/resumeDetail");
 		ResumeInfo resumeInfo = resumeCommentService.findResumeInfoById(id);
-		List<ResumeCommentInfo> resumeCommentInfoList = resumeCommentService.getComment(id);
+		List<ResumeCommentInfoVO> resumeCommentInfoList = resumeCommentService.getComment(id);
 		
 		
 		modelAndView.addObject("resumeInfo", resumeInfo);

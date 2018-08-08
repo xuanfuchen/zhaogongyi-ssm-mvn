@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
+\<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ include file="/commons/jsp/include/common.jsp"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -237,7 +237,7 @@ table {
 									<c:forEach items="${resumeList}" var="comm">
 											<tr style="text-align: left;">
 												<%-- 用户名 --%>
-												<td style="text-align:left">${comm.acctId}<br></td>
+												<td style="text-align:left">${comm.acctName}<br></td>
 												<%-- 评论内容 --%>
 												<td> ${comm.content} <br></td>
 												<%-- 创建时间--%>
@@ -282,7 +282,6 @@ table {
      			},
      			
                  success: function(msg){
-                	 alert("评论成功！");
                 	 location.reload();
                  },
                  
